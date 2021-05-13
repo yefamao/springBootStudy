@@ -1,0 +1,67 @@
+#=======================================================================
+#yml基本语法
+#key: value；kv之间有空格
+#  大小写敏感
+#  使用缩进表示层级关系
+#  缩进不允许使用tab，只允许空格
+#  缩进的空格数不重要，只要相同层级的元素左对齐即可
+#  '#'表示注释
+#  字符串无需加引号，如果要加，''与""表示字符串内容 会被 转义/不转义
+
+#  • 字面量：单个的、不可再分的值。date、boolean、string、number、null
+#k: v
+
+#  • 对象：键值对的集合。map、hash、set、object
+#行内写法：  k: {k1:v1,k2:v2,k3:v3}
+##或
+#k:
+#  k1: v1
+#  k2: v2
+#  k3: v3
+
+#  • 数组：一组按次序排列的值。array、list、queue
+#行内写法：  k: [v1,v2,v3]
+##或者
+#k:
+#  - v1
+#  - v2
+#  - v3
+#=======================================================================
+#改变默认资源访问路径
+#spring:
+#  mvc:
+#    static-path-pattern: /yefamao/**
+#  resources:
+#    static-locations: [classpath:/hello/]
+#
+#  resources:
+#    add-mappings: false   禁用所有静态资源规则
+#=======================================================================
+
+spring:
+  profiles:
+    active: abc   #加载其它配置文件
+
+  datasource:     #数据源配置
+      url: jdbc:mysql://localhost:3306/ssmtest?serverTimezone=CTT
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: 1018
+  thymeleaf:
+    cache: false
+    encoding: utf-8
+
+#配置服务器端口
+server:
+  port: 8888
+
+# 配置mybatis规则
+mybatis:
+  # 实体类别名包路径
+  type-aliases-package: com.zpark.pojo
+  # 映射文件路径
+  mapper-locations: classpath:mybatis/mapper/*.xml  #sql映射文件位置
+  configuration:
+    map-underscore-to-camel-case: true  #开启驼峰命名法
+
+

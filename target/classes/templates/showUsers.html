@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户信息列表</title>
+</head>
+<body>
+<h1 th:text="${msg}">用户信息列表:</h1>
+<table border="1">
+    <tr>
+        <td>用户ID</td>
+        <td>用户昵称</td>
+        <td>用户密码</td>
+        <td>用户姓名</td>
+        <td>年龄</td>
+        <td>性别</td>
+        <td>出生日期</td>
+        <td>信息创建时间</td>
+        <td>信息修改时间</td>
+        <td>备注</td>
+        <td>操作</td>
+    </tr>
+    <tr th:each="user:${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.userName}"></td>
+        <td th:text="${user.password}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.age}"></td>
+        <td th:switch="${user.sex}">
+            <span th:case="1">男</span>
+            <span th:case="2">女</span>
+        </td>
+        <td th:text="${#dates.format(user.birthday,'yyyy-MM-dd')}"></td>
+        <td th:text="${#dates.format(user.created,'yyyy-MM-dd')}"></td>
+        <td th:text="${#dates.format(user.updated,'yyyy-MM-dd')}"></td>
+        <td th:text="${user.note}"></td>
+        <td>
+            <a th:href="@{/updateById?id={userId}(userId=${user.id})}">修改 </a>
+            <a th:href="@{/delById?id={userId}(userId=${user.id})}">删除</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

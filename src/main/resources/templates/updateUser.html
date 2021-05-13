@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>信息修改页面</title>
+</head>
+<body>
+<form th:action="@{/updateUser}" method="post">
+    id:<input name="id"  th:value="${users.id}" readonly><span >*ID不能修改*</span><br>
+    用户名:<input name="userName" th:value="${users.userName}"><br>
+    密码:<input name="password" th:value="${users.password}"><br>
+    别名:<input name="name" th:value="${users.name}"><br>
+    年龄:<input name="age" th:value="${users.age}"><br>
+    性别:<input type="radio" name="sex" th:checked="${users.sex==1?true : false}" value=1>男
+         <input type="radio" name="sex" th:checked="${users.sex==2?true :false}" value=2>女<br>
+    生日:<input name="birthday" th:value="${#dates.format(users.birthday,'yyyy-MM-dd')}"><br>
+    备注:<input name="note" th:value="${users.note}"><br>
+    <button>提交</button>
+</form>
+</body>
+</html>

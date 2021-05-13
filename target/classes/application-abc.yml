@@ -1,0 +1,6 @@
+goods:
+  id: 666
+  name: 香奈儿
+  price: 999
+  #createtime: 2021-03-25 22:22:22
+  detail: 限定款
